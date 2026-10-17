@@ -8,6 +8,11 @@ class Fila
     public:
         Fila(int _tam):suporte(_tam){}
         ~Fila(){}
+
+        int RemoverPrimeiroF();
+        int InserirNoFinal(int _id, string _nome, int _idade);
+        int InserirNoFinal(int _id, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria);
+
         int enfileirar(int _id, string _nome, int _idade);
         int enfileirar(int _id, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria);
         int desenfileirar();
@@ -15,6 +20,7 @@ class Fila
         void filaCheia();
         void filaVazia();
     private:
+        int ini = 0;
         ListaNaoOrdenada suporte;
 };
 

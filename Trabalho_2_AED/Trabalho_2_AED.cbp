@@ -33,6 +33,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Geral.cpp" />
+		<Unit filename="Geral.h" />
 		<Unit filename="include/Elemento.h" />
 		<Unit filename="include/Fila.h" />
 		<Unit filename="include/ListaNaoOrdenada.h" />

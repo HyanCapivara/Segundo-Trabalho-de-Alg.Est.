@@ -39,7 +39,7 @@ int ListaNaoOrdenada::InserirNoInicio(int _id, string _nome, int _idade){
     return 1;
 }
 
-int ListaNaoOrdenada::InserirNoInicioF(int _id, string _nome, int _idade){
+/*int ListaNaoOrdenada::InserirNoInicio_Deslocamento(int _id, string _nome, int _idade){
     if(ocupadas == tam){
         cout << "lista cheia!" << endl;
         return -1;
@@ -50,7 +50,7 @@ int ListaNaoOrdenada::InserirNoInicioF(int _id, string _nome, int _idade){
     vetor[0] = new humano(_id, _nome, _idade);
     ocupadas++;
     return 1;
-}
+}*/
 
 int ListaNaoOrdenada::InserirNoFinal(int _id, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria){
     if(ocupadas == tam){
@@ -76,7 +76,7 @@ int ListaNaoOrdenada::InserirNoInicio(int _id, string _nome, int _idade, string 
     return 1;
 }
 
-int ListaNaoOrdenada::InserirNoInicioF(int _id, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria){
+/*int ListaNaoOrdenada::InserirNoInicio_Deslocamento(int _id, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria){
     if(ocupadas == tam){
         cout << "lista cheia!" << endl;
         return -1;
@@ -87,7 +87,7 @@ int ListaNaoOrdenada::InserirNoInicioF(int _id, string _nome, int _idade, string
     vetor[0] = new professor(_id, _nome, _idade, _especialidade, _salario, _carga_horaria);
     ocupadas++;
     return 1;
-}
+}*/
 
 int ListaNaoOrdenada::RemoverPrimeiro(){
     if(ocupadas == 0){
@@ -205,5 +205,7 @@ void ListaNaoOrdenada::ImprimirLista() const{
 }
 
 int ListaNaoOrdenada::getOcupadas() const{return ocupadas;}
+void ListaNaoOrdenada::setOcupadas(int _ocupadas){ocupadas = _ocupadas;}
 int ListaNaoOrdenada::getTam() const{return tam;}
 Elemento* ListaNaoOrdenada::getVetor(int pos) const{return vetor[pos];}
+Elemento** ListaNaoOrdenada::getVetorPAlterar(int pos) const{return &vetor[pos];}

@@ -12,7 +12,6 @@ class Elemento
         Elemento(int _id); //O único método para inserir ID's
         virtual ~Elemento(); //destrutor virtual já que vou usar um vetor com classes derivadas de elemento
         virtual void imprimirInfo() const = 0;
-        void setID(int _id);
         int getID() const;
     protected:
         int ID;
