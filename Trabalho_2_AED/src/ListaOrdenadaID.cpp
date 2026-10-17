@@ -1,5 +1,4 @@
 #include "ListaOrdenadaID.h"
-
 #include <iostream>
 
 ListaOrdenadaID::ListaOrdenadaID(int _tam)
@@ -7,19 +6,21 @@ ListaOrdenadaID::ListaOrdenadaID(int _tam)
     ocupadas = 0;
     tam = _tam;
     vetor = new Elemento*[tam];
+    cout << "Lista criada com sucesso!\n\n";
 }
 
 ListaOrdenadaID::~ListaOrdenadaID()
 {
     delete[] vetor;
+    cout << "lista deletada" << endl;
 }
 
 int ListaOrdenadaID::BuscarPeloID(int ini, int fim, int id_buscado) const{
-    if(ini < fim){
+    if(ini <= fim){
         int meio = (ini+fim)/2;
-        if(vetor[meio]->getID() > id_buscado)
+        if(id_buscado > vetor[meio]->getID())
             return BuscarPeloID(meio+1, fim, id_buscado);
-        else if(vetor[meio]->getID() < id_buscado)
+        else if(id_buscado < vetor[meio]->getID())
             return BuscarPeloID(ini, meio-1, id_buscado);
         else
             return meio;
@@ -35,7 +36,12 @@ int ListaOrdenadaID::InserirOrdenadamente(int _id, string _nome, int _idade){
 
     int pos_ins = BuscarPeloID(0, ocupadas-1, _id);
 
-    for(int i = ocupadas; i > pos_ins; i++)
+    if(pos_ins < ocupadas && vetor[pos_ins]->getID() == _id){
+        cout << "O ID informado ja esta associado a um elemento" << endl;
+        return -1;
+    }
+
+    for(int i = ocupadas; i > pos_ins; i--)
         vetor[i] = vetor[i-1];
 
     vetor[pos_ins] = new humano(_id, _nome, _idade);
@@ -81,12 +87,18 @@ int ListaOrdenadaID::RemoverUltimo(){ //idem
     }
 
     delete vetor[ocupadas-1];
+
     ocupadas--;
     cout << "elemento removido" << endl;
     return 1;
 }
 
 int ListaOrdenadaID::RemoverPeloID(int id_remova_me){
+    if(ocupadas == 0){
+        cout << "lista vazia" << endl;
+        return -1;
+    }
+
     int pos_rem = BuscarPeloID(0, ocupadas-1, id_remova_me);
 
     if(pos_rem >= ocupadas || vetor[pos_rem]->getID() != id_remova_me){
@@ -99,15 +111,48 @@ int ListaOrdenadaID::RemoverPeloID(int id_remova_me){
     for(int i = pos_rem; i < ocupadas; i++)
         vetor[i] = vetor[i+1];
 
+    ocupadas--;
+
     return 1;
 }
 
-int ListaOrdenadaID::AlterarPeloID(int id_buscado, int _id, string _nome, int _idade){
+/*int ListaOrdenadaID::AlterarPeloID(int id_buscado, int _id, string _nome, int _idade){
     if(RemoverPeloID(id_buscado) == 1){
         InserirOrdenadamente(_id, _nome, _idade);
         return 1;
     }
 
+    return -1;
+}*/
+
+int ListaOrdenadaID::AlterarPeloID(int id_buscado, string _nome, int _idade){
+    for(int i = 0; i < ocupadas; i++){
+        if(id_buscado == vetor[i]->getID()){
+            delete vetor[i];
+            vetor[i] = new humano(id_buscado, _nome, _idade);
+            return 1;
+        }
+    }
+    return -1;
+}
+
+/*int ListaOrdenadaID::AlterarPeloID(int id_buscado, int _id, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria){
+    if(RemoverPeloID(id_buscado) == 1){
+        InserirOrdenadamente(_id, _nome, _idade, _especialidade, _salario, _carga_horaria);
+        return 1;
+    }
+
+    return -1;
+}*/
+
+int ListaOrdenadaID::AlterarPeloID(int id_buscado, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria){
+    for(int i = 0; i < ocupadas; i++){
+        if(id_buscado == vetor[i]->getID()){
+            delete vetor[i];
+            vetor[i] = new professor(id_buscado, _nome, _idade, _especialidade, _salario, _carga_horaria);
+            return 1;
+        }
+    }
     return -1;
 }
 

@@ -1,10 +1,7 @@
 #ifndef LISTAORDENADAID_H
 #define LISTAORDENADAID_H
 
-#include <string>
 #include "Elemento.h"
-
-using namespace std;
 
 class ListaOrdenadaID
 {
@@ -26,11 +23,16 @@ class ListaOrdenadaID
         int RemoverUltimo(); //idem ao acima
         int RemoverPeloID(int id_remova_me);
 
-        int AlterarPeloID(int id_buscado, int _id, string _nome, int _idade);
+        //int AlterarPeloID(int id_buscado, int _id, string _nome, int _idade);
+        int AlterarPeloID(int id_buscado, string _nome, int _idade);
 
-        //int AlterarPeloID(int _id, int _idade, string _nome, int _carga_horaria, string _especialidade, float _salario); <-implementar mais tarde
+        //int AlterarPeloID(int id_buscado, int _id, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria);
+        int AlterarPeloID(int id_buscado, string _nome, int _idade, string _especialidade, float _salario, int _carga_horaria);
 
         void ImprimirLista() const;
+
+        int getOcupadas() const{return ocupadas;}
+
     private:
         int tam;
         int ocupadas;

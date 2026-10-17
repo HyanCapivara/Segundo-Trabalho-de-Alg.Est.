@@ -1,8 +1,5 @@
 #include "Elemento.h"
 #include <iostream>
-#include <string>
-
-using namespace std;
 
 Elemento::Elemento(int _id)
 {

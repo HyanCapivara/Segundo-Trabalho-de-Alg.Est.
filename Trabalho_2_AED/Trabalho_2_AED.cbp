@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -31,6 +33,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/Elemento.h" />
+		<Unit filename="include/Fila.h" />
+		<Unit filename="include/ListaNaoOrdenada.h" />
+		<Unit filename="include/ListaOrdenadaID.h" />
+		<Unit filename="include/Pilha.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Elemento.cpp" />
+		<Unit filename="src/Fila.cpp" />
+		<Unit filename="src/ListaNaoOrdenada.cpp" />
+		<Unit filename="src/ListaOrdenadaID.cpp" />
+		<Unit filename="src/Pilha.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
